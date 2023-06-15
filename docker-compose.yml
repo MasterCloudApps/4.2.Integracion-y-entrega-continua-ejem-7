@@ -1,9 +1,7 @@
-version: '3'
-
 services:
  runner:
    image: gh-runner:maven
    environment:
      - REPO=MasterCloudApps/4.2.Integracion-y-entrega-continua-ejem-7
-     - TOKEN=
+     - TOKEN=<TOKEN>
      - LABELS=mca-ubuntu

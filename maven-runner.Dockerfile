@@ -1,6 +1,6 @@
 FROM gh-runner:base
 
-ARG MAVEN_VERSION="3.8.5"
+ARG MAVEN_VERSION="3.9.2"
 
 RUN curl https://www-eu.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.zip -L -o /tmp/maven.zip \
     && unzip -qq -d /usr/share /tmp/maven.zip \

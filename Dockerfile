@@ -1,6 +1,6 @@
-FROM ubuntu:22.04
+FROM ubuntu:20.04
 
-ARG RUNNER_VERSION="2.292.0"
+ARG RUNNER_VERSION="2.304.0"
 
 RUN apt-get update && apt-get install -y \
    curl \

@@ -1,19 +1,27 @@
-# Ejemplo 7 - GitHub Actions
+# Ejemplo 7 - Custom runners
 
-Este proyecto consta de un servidor REST sencillo para la gestión de items.
+Este proyecto consta de un servidor REST sencillo para la gestión de items y cuenta con un workflow de GitHub Actions para la ejecución de sus test.
 
-## Construir la aplicación (en local)
 
-Para construir el JAR del proyecto (y lanzar los test):
+Para ejecutar el runner puede lanzarse tal y como se indica en Settings > Actions > Runners o mediante Docker:
 
+Construimos la imagen base
+```bash
+docker build --tag gh-runner:base .
 ```
-    ./mvnw clean package
+
+Construimos la imagen específica para Maven
+```bash
+docker build --tag gh-runner:maven -f maven-runner.Dockerfile .
 ```
 
-## Lanzar la aplicación en local (en local)
-
-Para lanzar la aplicación el local:
-
+Lanzamos el runner como un contenedor
+```bash
+docker run -d --env REPO=MasterCloudApps/4.2.Integracion-y-entrega-continua-ejem-7 \
+   --env TOKEN=<TOKEN> \
+   --env LABELS=mca-runner \
+   --name maven-runner gh-runner:maven
 ```
-    java -jar target/items-0.0.1-SNAPSHOT.jar 
-```
+
+
+
